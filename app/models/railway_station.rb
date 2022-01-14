@@ -5,5 +5,5 @@ class RailwayStation < ActiveRecord::Base
   has_many :tickets, foreign_key: :first_station_id
   has_many :tickets, foreign_key: :last_station_id
 
-  validates :title, presence: true 
+  validates :title, presence: true
 end
