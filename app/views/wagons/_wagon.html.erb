@@ -1,0 +1,10 @@
+<tr>
+  <td><%= wagon.type_of_wagon %></td>
+  <td><%= wagon.top_places %></td>
+  <td><%= wagon.bottom_places %></td>
+  <td><%= wagon.train.number %></td>
+
+  <td><%= link_to 'Show', wagon_path(wagon) %></td>
+  <td><%= link_to 'Edit', edit_wagon_path(wagon) %></td>
+  <td><%= link_to 'Destroy', wagon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
