@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_02_21_122613) do
+=======
+ActiveRecord::Schema.define(version: 2022_01_19_175909) do
+>>>>>>> Created homework 16
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
@@ -62,8 +66,18 @@ ActiveRecord::Schema.define(version: 2022_02_21_122613) do
   end
 
   create_table "wagons", force: :cascade do |t|
+<<<<<<< HEAD
     t.integer "bottom_places"
+=======
+    t.string "type"
+    t.integer "number"
+    t.integer "serial_number"
+>>>>>>> Created homework 16
     t.integer "top_places"
+    t.integer "bottom_places"
+    t.integer "side_top_places"
+    t.integer "side_bottom_places"
+    t.integer "seating_places"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "train_id"
