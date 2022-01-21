@@ -5,6 +5,8 @@
   <%= @wagon.type_of_wagon %>
 </p>
 
+<%= render "#{@wagon.type.underscore}", wagon: @wagon %>
+
 <p>
   <strong>Amount of top places:</strong>
   <%= @wagon.top_places %>
