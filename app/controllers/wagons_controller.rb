@@ -1,11 +1,8 @@
 class WagonsController < ApplicationController
-  before_action :set_wagon, only: %i[show edit update destroy]
-<<<<<<< HEAD
-  
-=======
-  before_action :set_type
 
->>>>>>> Created homework 16
+  before_action :set_wagon, only: %i[show edit update destroy]
+  before_action :set_train, only: %i[create new] 
+  
   def index
     @wagons = type_class.all
   end
@@ -15,36 +12,26 @@ class WagonsController < ApplicationController
   end
 
   def create
-    @wagon = Wagon.new(wagon_params)
+    @wagon = @train.wagons.new(wagon_params)
     
     if @wagon.save
-      redirect_to @wagon
+      redirect_to @train
     else
       render :new
     end
   end
 
-  def show; end
+  def show
+    @wagon = Wagon.find(params[:id])
+  end
 
   private
 
-  def set_wagon
-    @wagon = type_class.find(params[:id])
-  end
-
-  def set_type
-    @type = type
-  end
-
-  def type
-    Wagon.types.include?(params[:type]) ? params[:type] : 'Wagon'
-  end
-
-  def type_class
-    type.constantize
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 
   def wagon_params
-    params.require(:wagon).permit(:number, :top_places, :bottom_places, :side_top_places, :side_bottom_places, :seating_places, :train_id, :type)
+    params.require(:wagon).permit(:number, :top_places, :bottom_places, :side_top_places, :side_bottom_places, :seating_places, :type)
   end
 end

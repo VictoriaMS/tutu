@@ -1,0 +1,5 @@
+<%= form_tag find_search_path(@search), method: :patch do %>
+  <%= select_tag :first_staton, options_for_select(@stations.collect{|st| [st.title, st.id] }) %>
+  <%= select_tag :last_staton, options_for_select(@stations.collect{|st| [st.title, st.id] }) %>
+  <%= submit_tag 'Search' %>
+<% end %>

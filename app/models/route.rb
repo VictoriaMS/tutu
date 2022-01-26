@@ -5,5 +5,5 @@ class Route < ActiveRecord::Base
 
   validates :title, presence: true
 
-  scope :stations_in_order, ->(route) { route.railway_stations.order(:serial_number) }
+  scope :stations_in_order, ->(route) { route.railway_stations.order(:position) }
 end
