@@ -1,0 +1,5 @@
+<%= form_with url: update_position_railway_station_path(station), method: :patch do |form| %>
+  <%= form.number_field  :position, value: station.position_in(route) %>
+  <%= form.hidden_field  :route_id, value: route.id %>
+  <%= form.submit 'Update' %>
+<% end %>

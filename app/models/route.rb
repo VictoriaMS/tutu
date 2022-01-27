@@ -5,5 +5,24 @@ class Route < ActiveRecord::Base
 
   validates :title, presence: true
 
-  scope :stations_in_order, ->(route) { route.railway_stations.order(:position) }
+  def self.search_by(first_station_id, last_station_id)
+    routes = joins(:railway_stations_routes).where(railway_stations_routes: {railway_station_id: [first_station_id, last_station_id] }).uniq
+    routes.select {|route| route.railway_stations.find_by(id: first_station_id ) && route.railway_stations.find_by(id: last_station_id) }
+  end
+
+  def first_station
+    railway_stations.ordered.first
+  end
+
+  def last_station
+    railway_stations.ordered.last
+  end 
+
+  def departure_time_first_station
+    railway_stations.ordered.first.departure_time(self)
+  end
+
+  def arrival_time_last_station
+    railway_stations.ordered.last.arrival_time(self)
+  end
 end

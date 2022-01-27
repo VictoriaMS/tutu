@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     patch :update_arrival_time, on: :member
   end
 
+  resources :tickets
   resources :routes
   resources :wagons
   resources :coupe_wagons, controller: 'wagons', type: 'CoupeWagon'
@@ -16,9 +17,7 @@ Rails.application.routes.draw do
   resources :seated_wagons, controller: 'wagons', type: 'SeatedWagon'
   resources :sleeping_wagons, controller: 'wagons', type: 'SleepingsWagon'
 
-  resource :search do 
-    patch :find, on: :member
-  end
+  resource :search, only: [:new, :show, :edit]
 
   get 'welcome/index'
 

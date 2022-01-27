@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title route</th>
+      <th>Depurture time</th>
+      <th>Arrival time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @routes.each do |route| %>
+      <tr>
+        <td><%= route.title %></td>
+        <td><%= route.departure_time_first_station %></td>
+        <td><%= route.arrival_time_last_station %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

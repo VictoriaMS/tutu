@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p><h1>
+  <strong>Your ticket's number: </strong>
+  <%= @ticket.number %>
+</h1></p>
+
+<p>
+  <strong>Ful name: </strong>
+  <%= @ticket.full_name %>
+</p>
+
+<p>
+  <strong>Departure time: </strong>
+  <%= @ticket.first_station.departure_time(@train.route) %>
+  <strong>Arrival time: </strong>
+  <%= @ticket.last_station.arrival_time(@train.route) %>
+</p>
+
+<p>
+  <strong>Start station - End station: </strong>
+  <%= "#{@ticket.first_station.title} - #{@ticket.last_station.title}"%>
+</p>

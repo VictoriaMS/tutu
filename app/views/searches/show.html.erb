@@ -1,5 +1,21 @@
-<%= form_tag find_search_path(@search), method: :patch do %>
-  <%= select_tag :first_staton, options_for_select(@stations.collect{|st| [st.title, st.id] }) %>
-  <%= select_tag :last_staton, options_for_select(@stations.collect{|st| [st.title, st.id] }) %>
+<h1>Search for routes and trains</h1>
+<%= form_tag new_search_path, method: :get do %>
+  <%= select_tag :first_station, options_for_select(RailwayStation.all.collect{|st| [st.title, st.id] }) %>
+  <%= select_tag :last_station, options_for_select(RailwayStation.all.collect{|st| [st.title, st.id] }) %>
   <%= submit_tag 'Search' %>
+<% end %>
+<br>
+
+<% if @routes %>
+  <%= render 'routes_found' %>
+<% else %>
+  <p>Route not found</p>
+<% end %>
+
+<br>
+
+<% if @trains %>
+  <%= render 'trains_found' %>
+<% else %>
+  <p>Trains not found</p>
 <% end %>

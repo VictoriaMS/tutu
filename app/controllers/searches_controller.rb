@@ -1,12 +1,11 @@
 class SearchesController < ApplicationController
   def show 
     @stations = RailwayStation.all
-    @search = Search.new
   end
 
-  def find
-    @search = Search.new
-    @route = @search.find_route(params[:first_station], params[:last_station])
-    redirect_to @route
+  def new 
+    @routes = Route.search_by(params[:first_station], params[:last_station])
+    @trains = @routes.map {|route| route.trains }.flatten
+    render :show 
   end
 end
