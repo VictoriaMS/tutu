@@ -24,3 +24,13 @@
   background-color: #45a1ff;
   color: #fff;
 }
+
+TABLE {
+  border: 1px solid black;
+  border-collapse: collapse; 
+ }
+
+ TD, TH {
+  padding: 4px;
+  border: 1px solid black;
+ }

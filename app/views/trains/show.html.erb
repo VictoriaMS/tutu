@@ -13,5 +13,38 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Amount of compartment wagons:</strong>
+  <%= @train.compartment_wagons.count %>
+</p>
+
+<p>
+  <strong>Amount of econom-class wagons:</strong>
+  <%= @train.econom_class_wagons.count %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Amount of places in compartment wagons</th>
+      <th colspan="2">Amount of places in econom-class wagons</th>
+    </tr>
+    <tr>
+      <th>Top places</th>
+      <th>Bottom places</th>
+      <th>Top places</th>
+      <th>Bottom places</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= @train.count_top_places('compartment') %></th>
+      <th><%= @train.count_bottom_places('compartment') %></th>
+      <th><%= @train.count_top_places('econom-class') %></th>
+      <th><%= @train.count_bottom_places('econom-class') %></th>
+    </tr>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
