@@ -1,44 +1,42 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: %i[show edit update destroy]
 
-  def index 
+  def index
     @routes = Route.all
   end
 
-  def show 
-  end
+  def show; end
 
-  def new 
+  def new
     @route = Route.new
   end
 
-  def create 
+  def create
     @route = Route.new(route_params)
 
-    if @route.save 
-      redirect_to @route 
-    else 
+    if @route.save
+      redirect_to @route
+    else
       render :new
     end
   end
 
-  def edit 
-  end
+  def edit; end
 
-  def update 
+  def update
     if @route.update(route_params)
-      redirect_to @route 
-    else 
+      redirect_to @route
+    else
       render :edit
     end
   end
 
-  def destroy 
-    @route.destroy 
+  def destroy
+    @route.destroy
     redirect_to routes_url
-  end 
+  end
 
-  private 
+  private
 
   def route_params
     params.require(:route).permit(:title)
