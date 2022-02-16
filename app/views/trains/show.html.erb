@@ -38,10 +38,10 @@
   </thead>
   <tbody>
     <tr>
-      <th><%= @train.count_top_places('compartment') %></th>
-      <th><%= @train.count_bottom_places('compartment') %></th>
-      <th><%= @train.count_top_places('econom-class') %></th>
-      <th><%= @train.count_bottom_places('econom-class') %></th>
+      <th><%= @train.count_places('top_places', 'compartment_wagons') %></th>
+      <th><%= @train.count_places('bottom_places', 'compartment_wagons') %></th>
+      <th><%= @train.count_places('top_places', 'econom_class_wagons') %></th>
+      <th><%= @train.count_places('bottom_places', 'econom_class_wagons') %></th>
     </tr>
   </tbody>
 </table>

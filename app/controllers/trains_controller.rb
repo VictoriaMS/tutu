@@ -16,22 +16,18 @@ class TrainsController < ApplicationController
   def create
     @train = Train.new(train_params)
 
-    respond_to do |format|
-      if @train.save
-        redirect_to @train
-      else
-        render :new
-      end
+    if @train.save
+      redirect_to @train
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @train.update(train_params)
-        redirect_to @train
-      else
-        render :edit
-      end
+    if @train.update(train_params)
+      redirect_to @train
+    else
+      render :edit
     end
   end
 
