@@ -4,6 +4,7 @@ class CreateWagons < ActiveRecord::Migration[5.2]
       t.string :type_of_wagon
       t.integer :bottom_places
       t.integer :top_places
+      t.references :train
 
       t.timestamps
     end

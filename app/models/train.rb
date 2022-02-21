@@ -13,7 +13,7 @@ class Train < ActiveRecord::Base
     wagons.select { |wagon| wagon.type_of_wagon == 'econom-class' }
   end
 
-  def count_places(type_place, wagons)
-    self.send(wagons.to_sym).inject(0) { |places, wagon| places += wagon.send(type_place.to_sym) }
+  def count_of_places(type_wagon, type_place)
+    wagons.where(type: type_wagon.to_s).sum {|wagon| wagon.send(type_place.to_sym) }
   end
 end
