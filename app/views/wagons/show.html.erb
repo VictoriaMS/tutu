@@ -2,20 +2,10 @@
 
 <p>
   <strong>Type of the wagon:</strong>
-  <%= @wagon.type_of_wagon %>
+  <%= @wagon.type.underscore %>
 </p>
 
 <%= render "#{@wagon.type.underscore}", wagon: @wagon %>
-
-<p>
-  <strong>Amount of top places:</strong>
-  <%= @wagon.top_places %>
-</p>
-
-<p>
-  <strong>Amount of bottom places:</strong>
-  <%= @wagon.bottom_places %>
-</p>
 
 <p> 
   <strong>The wagon belongs to the train with the number:</strong>
@@ -24,4 +14,4 @@
 
 
 <%= link_to 'Edit', edit_wagon_path(@wagon) %> |
-<%= link_to 'Back', wagons_path %>
+<%= link_to 'Back', train_path(@wagon.train) %>

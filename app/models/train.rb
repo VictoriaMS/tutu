@@ -5,15 +5,15 @@ class Train < ActiveRecord::Base
   has_many :tickets
   has_many :wagons
 
-  def compartment_wagons 
-    wagons.select { |wagon| wagon.type_of_wagon == 'compartment' }
+  def sorting_wagons
+    if in_order
+      wagons.order(:serial_number)
+    else 
+      wagons.order(serial_number: :desc)
+    end
   end
 
-  def econom_class_wagons
-    wagons.select { |wagon| wagon.type_of_wagon == 'econom-class' }
-  end
-
-  def count_of_places(type_wagon, type_place)
-    wagons.where(type: type_wagon.to_s).sum {|wagon| wagon.send(type_place.to_sym) }
+  def counting_places(type_wagon, type_places)
+    wagons.where(type: type_wagon.to_s).sum { |wagon| wagon.send(type_places.to_sym) }
   end
 end

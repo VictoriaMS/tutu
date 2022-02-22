@@ -12,39 +12,10 @@
     Route not assigned 
   <% end %>
 </p>
-
 <p>
-  <strong>Amount of compartment wagons:</strong>
-  <%= @train.compartment_wagons.count %>
+  <% @train.sorting_wagons.each do |wagon| %>
+    <%= link_to wagon.number, wagon_path(wagon) %>
+  <% end %>
 </p>
-
-<p>
-  <strong>Amount of econom-class wagons:</strong>
-  <%= @train.econom_class_wagons.count %>
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">Amount of places in compartment wagons</th>
-      <th colspan="2">Amount of places in econom-class wagons</th>
-    </tr>
-    <tr>
-      <th>Top places</th>
-      <th>Bottom places</th>
-      <th>Top places</th>
-      <th>Bottom places</th> 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th><%= @train.count_places('top_places', 'compartment_wagons') %></th>
-      <th><%= @train.count_places('bottom_places', 'compartment_wagons') %></th>
-      <th><%= @train.count_places('top_places', 'econom_class_wagons') %></th>
-      <th><%= @train.count_places('bottom_places', 'econom_class_wagons') %></th>
-    </tr>
-  </tbody>
-</table>
-
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

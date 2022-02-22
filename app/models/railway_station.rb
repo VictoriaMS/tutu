@@ -6,4 +6,6 @@ class RailwayStation < ActiveRecord::Base
   has_many :tickets, foreign_key: :last_station_id
 
   validates :title, presence: true
+
+  scope :in_order, -> {order(:serial_number)}
 end
