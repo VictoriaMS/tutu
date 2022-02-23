@@ -13,8 +13,12 @@
   <% end %>
 </p>
 <p>
-  <% @train.sorting_wagons.each do |wagon| %>
-    <%= link_to wagon.number, wagon_path(wagon) %>
+  <% if @train.wagons.empty? %>
+    Train don't have wagons
+  <% else %>
+    <% @train.sorted_wagons.each do |wagon| %>
+      <%= link_to wagon.number, wagon_path(wagon) %>
+    <% end %>
   <% end %>
 </p>
 <%= link_to 'Edit', edit_train_path(@train) %> |

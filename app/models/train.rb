@@ -5,12 +5,8 @@ class Train < ActiveRecord::Base
   has_many :tickets
   has_many :wagons
 
-  def sorting_wagons
-    if in_order
-      wagons.order(:serial_number)
-    else 
-      wagons.order(serial_number: :desc)
-    end
+  def sorted_wagons
+    wagons.sorted(in_order)
   end
 
   def counting_places(type_wagon, type_places)
