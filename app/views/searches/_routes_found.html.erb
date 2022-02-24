@@ -10,8 +10,8 @@
     <% @routes.each do |route| %>
       <tr>
         <td><%= route.title %></td>
-        <td><%= route.departure_time_first_station %></td>
-        <td><%= route.arrival_time_last_station %></td>
+        <td><%= route.departure_time_first_station || 'Time not set' %></td>
+        <td><%= route.arrival_time_last_station || 'Time not set' %></td>
       </tr>
     <% end %>
   </tbody>

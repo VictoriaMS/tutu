@@ -1,6 +1,6 @@
 <h1>New wagon</h1>
 
-<%= form_with(model: @wagon, url: [@train, @wagon], local: true) do |form| %>
+<%= form_with(model: [@train, @wagon], local: true) do |form| %>
   
   <%= render 'shared/errors', resource: @wagon %>
 
@@ -35,8 +35,8 @@
   </div>
 
     <div class="field">
-    <%= form.label :seating_places %>
-    <%= form.number_field :seating_places %>
+    <%= form.label :seat_places %>
+    <%= form.number_field :seat_places %>
   </div>  
 
   <div class="actions">

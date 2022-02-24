@@ -9,36 +9,33 @@ class RailwayStation < ActiveRecord::Base
 
   scope :in_order, -> {order(:serial_number)}
 
-  def update_position(route, position)
-    station_route = station_route(route)
-    station_route.update(position: position) if station_route
+  def update_position(route, serial_number)
+    route_station(route).update(serial_number: serial_number) if route_station.any?
   end
 
   def position_in(route)
-    station_route(route).try(:position)
+    route_station(route).serial_number
   end
 
   def update_departure_time(route, departure_time)
-    station_route = station_route(route)
-    station_route.update(departure_time: departure_time) if station_route
+    route_station.update(departure_time: departure_time) if route_station.any?
   end
 
   def departure_time(route)
-    station_route(route).try(:departure_time)
+    route_station(route).departure_time
   end
 
   def update_arrival_time(route, arrival_time)
-    station_route = station_route(route)
-    station_route.update(arrival_time: arrival_time) if station_route
+    route_station.update(arrival_time: arrival_time) if route_station.any?
   end
 
   def arrival_time(route)
-    station_route(route).try(:arrival_time)
+    route_station(route).arrival_time
   end
 
   protected
 
-  def station_route(route)
-    @station_route ||= railway_stations_routes.where(route: route).first
+  def route_station (route)
+    @route_station ||= railway_stations_routes.where(route: route).first
   end
 end

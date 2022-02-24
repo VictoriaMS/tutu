@@ -1,5 +1,5 @@
 class Wagon < ActiveRecord::Base 
-  belongs_to :train, optional: true
+  belongs_to :train
 
   before_save :set_serial_number 
 
@@ -14,7 +14,11 @@ class Wagon < ActiveRecord::Base
 
   protected 
 
+  def self.types
+    %w(CoupeWagon EconomyWagon SeatedWagon SleepingWagon)
+  end
+
   def set_serial_number 
-    self.serial_number = train.wagons.maximum('number') + 1 unless train.nil? 
+    self.serial_number = train.wagons.maximum(:serial_number).to_i + 1 
   end
 end

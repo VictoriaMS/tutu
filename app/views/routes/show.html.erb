@@ -31,7 +31,7 @@
         </tr>
       </thead>
         <tbody>
-            <% @route.railway_stations.ordered.each do |station| %>
+            <% @route.railway_stations.in_order.each do |station| %>
               <tr>
                 <td><%= station.title %></td>
                 <td><%= render 'form_update_position', station: station, route: @route%></td>

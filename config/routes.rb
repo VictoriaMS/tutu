@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :trains do 
-    resources :wagons, shallow: true 
+    resources :wagons
   end
   
   resources :railway_stations do 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :seated_wagons, controller: 'wagons', type: 'SeatedWagon'
   resources :sleeping_wagons, controller: 'wagons', type: 'SleepingsWagon'
 
-  resource :search, only: [:new, :show, :edit]
+  resource :search, only: [:new, :show]
 
   get 'welcome/index'
 

@@ -4,11 +4,11 @@ class WagonsController < ApplicationController
   before_action :set_train, only: %i[create new] 
   
   def index
-    @wagons = type_class.all
+    @wagons = Wagon.all
   end
   
   def new
-    @wagon = type_class.new
+    @wagon = @train.wagons.build
   end
 
   def create
@@ -22,16 +22,19 @@ class WagonsController < ApplicationController
   end
 
   def show
-    @wagon = Wagon.find(params[:id])
   end
 
   private
+
+  def set_wagon
+    @wagon = Wagon.find(params[:id])
+  end
 
   def set_train
     @train = Train.find(params[:train_id])
   end
 
   def wagon_params
-    params.require(:wagon).permit(:number, :top_places, :bottom_places, :side_top_places, :side_bottom_places, :seating_places, :type)
+    params.require(:wagon).permit(:number, :top_places, :bottom_places, :side_top_places, :side_bottom_places, :seat_places, :type)
   end
 end
