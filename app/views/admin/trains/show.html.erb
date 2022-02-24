@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Number:</strong>
   <%= @train.number %>
@@ -17,7 +15,7 @@
     Train don't have wagons
   <% else %>
     <% @train.sorted_wagons.each do |wagon| %>
-      <%= link_to wagon.number, admin_train_wagon_path(wagon) %>
+      <%= link_to wagon.number, admin_wagon_path(wagon) %>
     <% end %>
   <% end %>
 </p>

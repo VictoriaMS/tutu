@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Type of the wagon:</strong>
   <%= @wagon.type.underscore %>
@@ -13,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_admin_train_wagon_path(@wagon) %> |
+<%= link_to 'Edit', edit_admin_wagon_path(@wagon) %> |
 <%= link_to 'Back', admin_train_path(@wagon.train) %>

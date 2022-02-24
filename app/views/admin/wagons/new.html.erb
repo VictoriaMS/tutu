@@ -1,6 +1,6 @@
 <h1>New wagon</h1>
 
-<%= form_with(model: [:admin, @train, @wagon], local: true) do |form| %>
+<%= form_with(model: [:admin, @wagon.train, @wagon], local: true) do |form| %>
   
   <%= render 'shared/errors', resource: @wagon %>
 

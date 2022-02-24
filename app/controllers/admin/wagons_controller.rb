@@ -1,4 +1,4 @@
-class Admin::WagonsController < BaseController
+class Admin::WagonsController < Admin::BaseController
 
   before_action :set_wagon, only: %i[show edit update destroy]
   before_action :set_train, only: %i[create new] 

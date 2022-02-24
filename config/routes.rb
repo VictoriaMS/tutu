@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do 
     resources :trains do 
-      resources :wagons
+      resources :wagons, shallow: true 
     end
     
     resources :tickets
