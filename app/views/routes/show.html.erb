@@ -21,9 +21,26 @@
   <% if @route.railway_stations.empty? %>
     No stations
   <% else %>
-    <% @route.railway_stations.each do |station| %>
-      <td><%= station.title %></td>
-    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Position</th>
+          <th>Departure time</th>
+          <th>Arrival time</th>
+        </tr>
+      </thead>
+        <tbody>
+            <% @route.railway_stations.in_order.each do |station| %>
+              <tr>
+                <td><%= station.title %></td>
+                <td><%= render 'form_update_position', station: station, route: @route%></td>
+                <td><%= render 'form_departure_time', station: station, route: @route %></td>
+                <td><%= render 'form_arrival_time', station: station, route: @route %></td>
+              </tr>
+            <% end %>
+      </tbody>
+    </table>
   <% end %>
 </p>
 

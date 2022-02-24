@@ -22,10 +22,18 @@ ActiveRecord::Schema.define(version: 2022_02_21_122613) do
     t.integer "railway_station_id"
     t.integer "route_id"
     t.integer "serial_number"
+    t.integer "position"
+    t.datetime "departure_time"
+    t.datetime "arrival_time"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +46,8 @@ ActiveRecord::Schema.define(version: 2022_02_21_122613) do
     t.integer "train_id"
     t.integer "first_station_id"
     t.integer "last_station_id"
+    t.string "full_name"
+    t.string "passport_data"
     t.index ["first_station_id"], name: "index_tickets_on_first_station_id"
     t.index ["last_station_id"], name: "index_tickets_on_last_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"

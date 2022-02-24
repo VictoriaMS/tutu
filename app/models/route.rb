@@ -4,4 +4,25 @@ class Route < ActiveRecord::Base
   has_many :trains
 
   validates :title, presence: true
+
+  def self.search_by(first_station_id, last_station_id)
+    routes = joins(:railway_stations_routes).where(railway_stations_routes: { railway_station_id: [first_station_id, last_station_id] }).uniq
+    routes.select { |route| route.railway_stations.find_by(id: first_station_id ) && route.railway_stations.find_by(id: last_station_id) }
+  end
+
+  def first_station
+    railway_stations.in_order.first
+  end
+
+  def last_station
+    railway_stations.in_order.last
+  end 
+
+  def departure_time_first_station
+    first_station.departure_time(self)
+  end
+
+  def arrival_time_last_station
+    last_station.arrival_time(self)
+  end
 end

@@ -1,5 +1,47 @@
 <h1>New wagon</h1>
 
-<%= render 'form', wagon: @wagon %> 
+<%= form_with(model: [@train, @wagon], local: true) do |form| %>
+  
+  <%= render 'shared/errors', resource: @wagon %>
 
-<%= link_to 'Back', wagons_path %>
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.select :type, Wagon.types.map {|t| [t.humanize, t.camelcase] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_places %>
+    <%= form.number_field :top_places %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bottom_places %>
+    <%= form.number_field :bottom_places %>
+  </div>
+
+  <div class="field">
+    <%= form.label :side_top_places %>
+    <%= form.number_field :side_top_places %>
+  </div>
+
+    <div class="field">
+    <%= form.label :side_bottom_places %>
+    <%= form.number_field :side_bottom_places %>
+  </div>
+
+    <div class="field">
+    <%= form.label :seat_places %>
+    <%= form.number_field :seat_places %>
+  </div>  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', trains_path(@train) %>

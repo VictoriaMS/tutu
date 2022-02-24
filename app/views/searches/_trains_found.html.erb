@@ -1,0 +1,9 @@
+<strong>Found trains on a given route:</strong>
+<% @trains.each do |train| %>
+<tr>
+  <td>
+    <%= train.number %>
+    <%= link_to 'Buy', new_ticket_path(@ticket, train_id: train.id) %>
+  </td>
+</tr>
+<% end %>
