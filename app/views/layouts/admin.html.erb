@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tutu</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div class="content">
+      <%= yield %>
+    </div>
+    <footer class="footer">
+      <p>(с) 2022 Victoria Stanislavovna. Educational project in  <a href="https://thinknetica.com/">the online school Thinknetica</a> </p>
+    </footer>
+  </body>
+</html>

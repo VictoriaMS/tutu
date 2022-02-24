@@ -1,0 +1,23 @@
+<%= form_with(model: [:admin, train], local: true) do |form| %>
+  
+  <%= render 'shared/errors', resource: @train %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :routes %>
+    <%= form.collection_select :route_id, Route.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.radio_button :in_order, true %> Wagons in order <br>
+    <%= form.radio_button :in_order, false %> Wagons out of order 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
