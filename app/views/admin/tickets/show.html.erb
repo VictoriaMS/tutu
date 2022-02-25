@@ -1,0 +1,24 @@
+<p><h1>
+  <strong>Your ticket's number: </strong>
+  <%= @ticket.number %>
+</h1></p>
+
+<p>
+  <strong>Ful name: </strong>
+  <%= @ticket.first_name %>
+  <%= @ticket.last_name%>
+</p>
+
+<p>
+  <strong>Departure time: </strong>
+  <%= @ticket.first_station.departure_time(@ticket.train.route) %>
+  <strong>Arrival time: </strong>
+  <%= @ticket.last_station.arrival_time(@ticket.train.route) %>
+</p>
+
+<p>
+  <strong>Start station - End station: </strong>
+  <%= "#{@ticket.first_station.title} - #{@ticket.last_station.title}"%>
+</p>
+
+<%= link_to 'All tickets', admin_tickets_path %>
