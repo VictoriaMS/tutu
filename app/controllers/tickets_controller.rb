@@ -1,11 +1,10 @@
 class TicketsController < ApplicationController
   def new 
     @ticket = Ticket.new
-    @user_id = User.first.id
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       redirect_to @ticket

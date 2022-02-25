@@ -3,7 +3,6 @@
 <%= form_with(model: @ticket, local: true) do |form| %> 
 
   <%= form.hidden_field :train_id, value: params[:train_id] %>
-  <%= form.hidden_field :user_id, value: @user_id %>
 
   <%= render 'shared/errors', resource: @ticket %>
 
