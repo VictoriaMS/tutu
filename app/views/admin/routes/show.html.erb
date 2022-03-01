@@ -42,5 +42,6 @@
   <% end %>
 </p>
 
+<%= link_to 'Buy ticket', new_admin_ticket_path(id: @route.id) %>
 <%= link_to 'Edit', edit_admin_route_path(@route) %> 
 <%= link_to 'Back', admin_routes_path %>
