@@ -16,9 +16,11 @@ Rails.application.routes.draw do
       patch :update_departure_time, on: :member
       patch :update_arrival_time, on: :member
     end
+
+    get 'welcome/index'
+
   end
 
-  get 'welcome/index'
 
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
