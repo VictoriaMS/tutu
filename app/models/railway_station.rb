@@ -10,7 +10,8 @@ class RailwayStation < ActiveRecord::Base
   scope :in_order, -> {order(:serial_number)}
 
   def update_position(route, serial_number)
-    route_station(route).update(serial_number: serial_number) if route_station.any?
+    route_station = route_station(route)
+    route_station.update(serial_number: serial_number) unless route_station.nil?
   end
 
   def position_in(route)
@@ -18,7 +19,8 @@ class RailwayStation < ActiveRecord::Base
   end
 
   def update_departure_time(route, departure_time)
-    route_station.update(departure_time: departure_time) if route_station.any?
+    route_station = route_station(route)
+    route_station.update(departure_time: departure_time) unless route_station.nil?
   end
 
   def departure_time(route)
@@ -26,7 +28,8 @@ class RailwayStation < ActiveRecord::Base
   end
 
   def update_arrival_time(route, arrival_time)
-    route_station.update(arrival_time: arrival_time) if route_station.any?
+    route_station = route_station(route)
+    route_station.update(arrival_time: arrival_time) unless route_station.any?
   end
 
   def arrival_time(route)

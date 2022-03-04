@@ -11,9 +11,9 @@
 
 <p>
   <strong>Departure time: </strong>
-  <%= @ticket.first_station.departure_time(@train.route) %>
+  <%= @ticket.first_station.departure_time(@ticket.train.route) %>
   <strong>Arrival time: </strong>
-  <%= @ticket.last_station.arrival_time(@train.route) %>
+  <%= @ticket.last_station.arrival_time(@ticket.train.route) %>
 </p>
 
 <p>
@@ -21,5 +21,5 @@
   <%= "#{@ticket.first_station.title} - #{@ticket.last_station.title}"%>
 </p>
 
-<%= link_to 'All tickets', tickets_path %>
-
+<%= link_to 'All tickets', admin_tickets_path %>
+<%= link_to 'Edit', edit_admin_ticket_path(@ticket)%>

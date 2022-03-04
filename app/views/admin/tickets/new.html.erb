@@ -1,10 +1,18 @@
-<h1>Your ticket</h1>
+<h1>Create tiket</h1>
 
-<%= form_with(model: @ticket, local: true) do |form| %> 
-
-  <%= form.hidden_field :train_id, value: params[:train_id] %>
+<%= form_with(model: [:admin, @ticket] , local: true) do |form| %> 
 
   <%= render 'shared/errors', resource: @ticket %>
+
+  <div class='field'>
+    <%= form.label :trains %>
+    <%= form.collection_select :train_id, @route.trains, :id, :number %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :users %>
+    <%= form.collection_select :user_id, @users, :id, :email %>
+  </div>
 
   <div class='field'> 
     <%= form.label :first_name %>

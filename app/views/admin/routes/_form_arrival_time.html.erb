@@ -1,0 +1,5 @@
+  <%= form_with url: update_arrival_time_admin_railway_station_path(station), method: :patch do |f| %>
+  <%= f.datetime_field :arrival_time, value: station.arrival_time(route).try(:strftime, '%Y-%m-%dT%H:%M:%S') %>
+  <%= f.hidden_field  :route_id, value: route.id %>
+  <%= f.submit 'Update' %>
+  <% end %>

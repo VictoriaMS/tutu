@@ -1,0 +1,35 @@
+<h1>Edit tiket</h1>
+<%= form_with(model: [:admin, @ticket] , local: true) do |form| %> 
+
+  <%= render 'shared/errors', resource: @ticket %>
+
+  <div class='field'>
+    <%= form.label :trains %>
+    <%= form.collection_select :train_id, @trains, :id, :number %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :users %>
+    <%= form.collection_select :user_id, @users, :id, :email %>
+  </div>
+
+  <div class='field'> 
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :passport_data %>
+    <%= form.text_field :passport_data%>
+  </div>
+
+  <div class='actions'>
+    <%= form.submit%>
+  </div>
+<% end %>
+

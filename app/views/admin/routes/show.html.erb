@@ -1,0 +1,47 @@
+<p>
+  <strong>Title:</strong>
+  <%= @route.title %>
+</p>
+
+<p>
+  <strong>Trains on the route:</strong>
+  <% if @route.trains.empty? %>
+    No train
+  <% else %>
+    <% @route.trains.each do |train| %>
+      <td><%= train.number %></td>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Stations:</strong>
+  <% if @route.railway_stations.empty? %>
+    No stations
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Position</th>
+          <th>Departure time</th>
+          <th>Arrival time</th>
+        </tr>
+      </thead>
+        <tbody>
+            <% @route.railway_stations.in_order.each do |station| %>
+              <tr>
+                <td><%= station.title %></td>
+                <td><%= render 'form_update_position', station: station, route: @route%></td>
+                <td><%= render 'form_departure_time', station: station, route: @route %></td>
+                <td><%= render 'form_arrival_time', station: station, route: @route %></td>
+              </tr>
+            <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</p>
+
+<%= link_to 'Buy ticket', new_admin_ticket_path(id: @route.id) %>
+<%= link_to 'Edit', edit_admin_route_path(@route) %> 
+<%= link_to 'Back', admin_routes_path %>

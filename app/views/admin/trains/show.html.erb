@@ -1,0 +1,25 @@
+<p>
+  <strong>Number:</strong>
+  <%= @train.number %>
+</p>
+<p>
+  <strong>Route:</strong> 
+  <% if @train.route %>
+    <%= @train.route.title %>
+  <% else %>
+    Route not assigned 
+  <% end %>
+</p>
+<p>
+  <% if @train.wagons.empty? %>
+    Train don't have wagons
+  <% else %>
+    <% @train.sorted_wagons.each do |wagon| %>
+      <%= link_to wagon.number, admin_wagon_path(wagon) %>
+    <% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Add wagon', new_admin_train_wagon_path(@train) %>
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

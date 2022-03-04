@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_122613) do
+ActiveRecord::Schema.define(version: 2022_03_01_112702) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
@@ -21,19 +21,13 @@ ActiveRecord::Schema.define(version: 2022_02_21_122613) do
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
-    t.integer "serial_number"
-    t.integer "position"
     t.datetime "departure_time"
     t.datetime "arrival_time"
+    t.integer "serial_number"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,7 +40,8 @@ ActiveRecord::Schema.define(version: 2022_02_21_122613) do
     t.integer "train_id"
     t.integer "first_station_id"
     t.integer "last_station_id"
-    t.string "full_name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "passport_data"
     t.index ["first_station_id"], name: "index_tickets_on_first_station_id"
     t.index ["last_station_id"], name: "index_tickets_on_last_station_id"
@@ -66,23 +61,37 @@ ActiveRecord::Schema.define(version: 2022_02_21_122613) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.boolean "admin", default: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.string "last_name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.integer "bottom_places"
+    t.integer "number"
+    t.integer "serial_number"
     t.integer "top_places"
+    t.integer "train_id"
+    t.integer "bottom_places"
+    t.integer "seating_places"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "train_id"
     t.integer "side_top_places"
     t.integer "side_bottom_places"
     t.integer "seat_places"
     t.string "type"
-    t.integer "serial_number"
-    t.integer "number"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 
