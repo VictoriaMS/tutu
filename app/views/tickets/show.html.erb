@@ -1,25 +1,26 @@
 <p><h1>
-  <strong>Your ticket's number: </strong>
+  <strong><%= t('.title') %> </strong>
   <%= @ticket.number %>
 </h1></p>
 
 <p>
-  <strong>Ful name: </strong>
+  <strong><%= t('.full_name') %> </strong>
   <%= @ticket.first_name %>
   <%= @ticket.last_name%>
 </p>
 
 <p>
-  <strong>Departure time: </strong>
+  <strong><%= t('.departure_time') %> </strong>
   <%= @ticket.first_station.departure_time(@train.route) %>
-  <strong>Arrival time: </strong>
+  <br>
+  <strong><%= t('.arrival_time') %> </strong>
   <%= @ticket.last_station.arrival_time(@train.route) %>
 </p>
 
 <p>
-  <strong>Start station - End station: </strong>
+  <strong><%= t('.start_station') %>-<%= t('.end_station') %>: </strong>
   <%= "#{@ticket.first_station.title} - #{@ticket.last_station.title}"%>
 </p>
 
-<%= link_to 'All tickets', tickets_path %>
+<%= link_to t('common.all_tickets'), tickets_path %>
 

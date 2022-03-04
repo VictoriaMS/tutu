@@ -1,4 +1,4 @@
-<h1>Your ticket</h1>
+<h1><%= t('.title') %></h1>
 
 <%= form_with(model: @ticket, local: true) do |form| %> 
 
@@ -22,6 +22,6 @@
   </div>
 
   <div class='actions'>
-    <%= form.submit%>
+    <%= form.submit t('.submit')%>
   </div>
 <% end %>
