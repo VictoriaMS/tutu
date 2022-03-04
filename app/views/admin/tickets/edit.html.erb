@@ -1,12 +1,11 @@
-<h1>Create tiket</h1>
-
+<h1>Edit tiket</h1>
 <%= form_with(model: [:admin, @ticket] , local: true) do |form| %> 
 
   <%= render 'shared/errors', resource: @ticket %>
 
   <div class='field'>
     <%= form.label :trains %>
-    <%= form.collection_select :train_id, @route.trains, :id, :number %>
+    <%= form.collection_select :train_id, @trains, :id, :number %>
   </div>
 
   <div class='field'>
@@ -33,3 +32,4 @@
     <%= form.submit%>
   </div>
 <% end %>
+

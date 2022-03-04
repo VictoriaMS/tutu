@@ -1,5 +1,6 @@
 class Admin::TicketsController < Admin::BaseController
-  before_action :set_ticket, only: %i[show destroy] 
+  before_action :set_ticket, only: %i[show destroy edit update] 
+  before_action :users, only: %i[edit new]
 
   def index 
     @tickets = Ticket.all
@@ -12,6 +13,18 @@ class Admin::TicketsController < Admin::BaseController
     @ticket.destroy 
     redirect_to admin_tickets_url
   end 
+
+  def edit
+    @trains = Train.all
+  end 
+  
+  def update
+    if @ticket.update(ticket_params)
+      redirect_to admin_ticket_path(@ticket)
+    else
+      render :edit
+    end
+  end
 
   def new 
     @ticket = Ticket.new
@@ -29,6 +42,10 @@ class Admin::TicketsController < Admin::BaseController
   end
 
   private
+
+  def users 
+    @users = User.where(admin: false)
+  end
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
