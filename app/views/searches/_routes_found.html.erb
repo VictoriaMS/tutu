@@ -1,18 +1,21 @@
-<table>
-  <thead>
-    <tr>
-      <th>Title route</th>
-      <th>Depurture time</th>
-      <th>Arrival time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @routes.each do |route| %>
-      <tr>
-        <td><%= route.title %></td>
-        <td><%= route.departure_time_first_station || 'Time not set' %></td>
-        <td><%= route.arrival_time_last_station || 'Time not set' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='col-md-4'>
+  <h3>Title route</h3>
+</div>
+<div class='col-md-4'>
+  <h3>Depurture time</h3>
+</div>
+<div class='col-md-4'>
+  <h3>Arrival time</h3>
+</div>
+
+<% @routes.each do |route| %>
+  <div class='col-md-4'>
+    <%= route.title %>
+  </div>
+  <div class='col-md-4'>
+    <%= route.departure_time_first_station || 'Time not set' %>
+  </div>
+  <div class='col-md-4'>
+    <td><%= route.arrival_time_last_station || 'Time not set' %></td>
+  </div>
+<% end %>

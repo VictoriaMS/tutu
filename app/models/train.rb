@@ -5,6 +5,8 @@ class Train < ActiveRecord::Base
   has_many :tickets
   has_many :wagons
 
+  validates :number, presence: true
+
   def sorted_wagons
     wagons.sorted(in_order)
   end

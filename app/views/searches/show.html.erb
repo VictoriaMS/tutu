@@ -1,21 +1,40 @@
-<h1>Search for routes and trains</h1>
-<%= form_tag new_search_path, method: :get do %>
-  <%= select_tag :first_station, options_for_select(RailwayStation.all.collect{|st| [st.title, st.id] }) %>
-  <%= select_tag :last_station, options_for_select(RailwayStation.all.collect{|st| [st.title, st.id] }) %>
-  <%= submit_tag 'Search' %>
-<% end %>
-<br>
+<div class='container'>
+  <div class='lines'>
+    <div class='row'>
+      <h1>Search for routes and trains</h1>
 
-<% if @routes %>
-  <%= render 'routes_found' %>
-<% else %>
-  <p>Route not found</p>
-<% end %>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <div class='col-md-4'>
+          <%= f.label :first_station %>
+          <%= f.collection_select :first_station, @stations, :id, :title, {:include_blank => false}, {:class => 'form-control'} %>
+        </div>
+        <div class='col-md-4'>
+          <%= f.label :last_station %>
+          <%= f.collection_select :last_station, @stations, :id, :title, {:include_blank => false}, {:class => 'form-control'} %>
+        </div>
+        <div class='col-md-4'>
+          <%= f.submit 'Search', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<br>
-
-<% if @trains %>
-  <%= render 'trains_found' %>
-<% else %>
-  <p>Trains not found</p>
-<% end %>
+  <% if @routes.empty? %>
+    <h4>Route is not found<h4>
+  <% else %>
+    <div class='lines'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <%= render 'routes_found' %>
+        </div>
+      </div>
+    </div>
+    <div class='lines'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <%= render 'trains_found' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

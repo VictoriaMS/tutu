@@ -1,0 +1,42 @@
+ru:
+  activerecord:
+    errors:
+      messages: 
+        blank: 'не может быть пустым'
+    models:
+      railway_station: 'Станция'
+      train: 'Поезд'
+      ticket: 'Билет'
+      coupe_wagon: 'Купе'
+      economy_wagon: 'Плацкартный вагон'
+      seated_wagon: 'Сидячий вагон'
+      sleeping_wagon: 'Спальный вагон'
+      route: 'Маршрут'
+    attributes: 
+      railway_station:
+        title: 'Название'
+      railway_stations_route: 
+        departure_time: 'Время отправления'
+        arrival_time: 'Время прибытия'
+        serial_number: 'Порядковый номер'
+      route:
+        title: 'Название'
+      ticket:
+        number: 'Номер'
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+        passport_data: 'Паспортные данные'    
+      train: 
+        number: 'Номер'
+      user:   
+        first_name: 'Имя'
+        last_name: 'Фамилия'
+      wagon:
+        number: 'Номер'
+        serial_number: 'Порядковый номер'
+        top_places: 'Верхние места'
+        bottom_places: 'Нижние места'
+        seat_places: 'Сидячие места'
+        side_top_places: 'Боковые верхние места'
+        side_bottom_places: 'Боковые нижние места'
+        type: 'Тип'

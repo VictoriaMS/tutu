@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       admin_welcome_index_path
     else 
       flash[:notice] = "Hi, #{current_user.first_name} #{current_user.last_name}"
-      new_search_path
+      search_path
     end
   end
 

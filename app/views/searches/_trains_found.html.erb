@@ -1,9 +1,22 @@
-<strong>Found trains on a given route:</strong>
-<% @trains.each do |train| %>
-<tr>
-  <td>
-    <%= train.number %>
-    <%= link_to 'Buy', new_ticket_path(@ticket, train_id: train.id) %>
-  </td>
-</tr>
-<% end %>
+<div class='row'>
+  <div class='col-md-3'>
+    <h4><strong>Found trains</strong></h4>
+  </div>
+  <div class='col-md-3'>
+    <h4><h4><strong>on a route</strong></h4>
+  </div>
+</div>
+
+<div class='row'>
+  <% @trains.each do |train| %>
+    <div class='col-md-3'>
+      <%= train.number %>
+    </div>
+    <div class='col-md-3'>
+      <%= train.route.title %>
+    </div>
+    <div class='col-md-3'>
+      <%= link_to 'Buy', new_ticket_path(@ticket, train_id: train.id), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

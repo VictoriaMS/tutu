@@ -1,0 +1,37 @@
+ru: 
+  common:
+    back: 'Назад'
+    show: 'Показать'
+    destroy: 'Удалить'
+    all_tickets: 'Все билеты'
+  tickets:
+    index:
+      title: 'Купленные билеты'
+      number: 'Номер:'
+      start_station: 'Начальная станция'
+      end_station: 'Конечная станция'
+    new:
+      title: 'Ваш билет'
+      submit: 'Купить'
+    show:
+      title: 'Ваш билет с номером:'
+      full_name: 'Имя Фамилия:'
+      departure_time: 'Время отправления:'
+      arrival_time: 'Время прибытия:'
+      start_station: 'Начальная станция'
+      end_station: 'Конечная станция'
+  devise:
+    sessions:
+      new:
+        log_in: "Войти"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
+  users:
+    registrations:
+      new:
+        sign_up: "Зарегистрироваться"
+        password: "Пароль"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        password_confirmation: "Подтверждение пароля"
+        min_characters: "символов минимум"
