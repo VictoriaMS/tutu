@@ -7,7 +7,8 @@ class Ticket < ActiveRecord::Base
   validates :first_name, :last_name, :passport_data, :number, presence: true 
 
   before_validation :assing_number, :assing_stations
-  after_create :send_notification
+  after_create :send_purchase_notice
+  after_destroy :send_cancellation_notice
 
   private
 
@@ -20,7 +21,11 @@ class Ticket < ActiveRecord::Base
     self[:last_station_id] = self.train.route.last_station.id
   end
 
-  def send_notification 
+  def send_purchase_notice
     TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def send_cancellation_notice
+    TicketsMailer.canceling_ticket(self.user, self).deliver_now
   end
 end
