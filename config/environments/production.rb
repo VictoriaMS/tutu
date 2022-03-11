@@ -64,6 +64,17 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "tutu_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'blooming-basin-88446.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'heroku.com',
+    user_name:            'vikamg48@gmail.com',
+    password:             'loliklol202522',
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
