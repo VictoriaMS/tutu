@@ -1,6 +1,6 @@
-<%= form_with(model: [:admin, railway_station], local: true) do |form| %>
+<%= form_with(model: [:admin, station], local: true, html: {style: "display: #{hidden ? 'none' : 'block' }"}, id: "edit_railway_station_#{station.id}") do |form| %>
   
-  <%= render 'shared/errors', resource: @railway_station %>
+  <%= render 'shared/errors', resource: station %>
 
   <div class="field">
     <%= form.label :title %>
