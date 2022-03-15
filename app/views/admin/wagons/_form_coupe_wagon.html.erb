@@ -1,0 +1,23 @@
+<%= form_with(model: [:admin, wagon.train, wagon], local: true, html: {style: "display: #{hidden ? 'none' : 'block'}"}, id: 'coupe_wagon', class: 'form') do |form| %>
+  <%= render 'shared/errors', resource: wagon %>
+  <%= form.hidden_field :type, value: 'CoupeWagon' %>
+
+  <div class='field'>
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :top_places %>
+    <%= form.number_field :top_places %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :bottom_places %>
+    <%= form.number_field :bottom_places %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
