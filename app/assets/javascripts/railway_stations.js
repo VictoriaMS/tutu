@@ -1,17 +1,17 @@
 $(document).on('turbolinks:load', function() {
     $('a.edit_station').click(function(e) {
         e.preventDefault()
-        let station_id = $(this).data('stationId')
-        let form = $('#edit_railway_station_' + station_id)
-        let title = $('#railway_station_title_' + station_id)
+        let stationId = $(this).data('stationId')
+        let form = $('#edit_railway_station_' + stationId)
+        let title = $('#railway_station_title_' + stationId)
         
-        if (!$(this).hasClass('Cancel')) {
-            $(this).html('Cancel')
-            $(this).addClass('Cansel')
-        } else {
+        if ($(this).hasClass('Cancel')) {
             $(this).html('Edit')
-            $(this).removeClass('Cansel')
+        } else {
+            $(this).html('Cancel')
         }
+
+        $(this).toggleClass('Cancel')
         title.toggle()
         form.toggle()
     });
