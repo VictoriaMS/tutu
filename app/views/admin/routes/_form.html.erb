@@ -1,6 +1,6 @@
-<%= form_with(model: [:admin, @route], local: true) do |form| %>
+<%= form_with(model: [:admin, route], local: true, html: {style: "display: #{hidden ? 'none' : 'block'}"}, id: "edit_route_#{route.id}") do |form| %>
   
-  <%= render 'shared/errors', resource: @route %>
+  <%= render 'shared/errors', resource: route %>
 
   <div class="field">
     <%= form.label :title %>
